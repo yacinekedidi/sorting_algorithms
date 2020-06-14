@@ -46,7 +46,7 @@ int partition(int *a, int left, int right, int size)
 			i++;
 		}
 	}
-	if (a[i] > pivot)
+	if (a[i] > a[pivot])
 	{
 		swap(a, i, pivot);
 		if (i != pivot)
