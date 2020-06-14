@@ -67,7 +67,7 @@ void qs(int *a, int left, int right, int size)
 {
 	int index;
 
-	if (left >= right)
+	if (left > right)
 		return;
 
 	index = partition(a, left, right, size);
