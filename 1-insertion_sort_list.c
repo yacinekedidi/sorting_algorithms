@@ -1,16 +1,35 @@
 #include "sort.h"
 
 /**
+ * swap - Entry point
+ * @back: node
+ * @current: node
+ * Return: Always
+ */
+void swap(listint_t *back, listint_t *current)
+{
+	if (back->prev)
+		back->prev->next = current;
+	if (current->next)
+		current->next->prev = current->prev;
+	back->next = current->next;
+	current->prev = back->prev;
+	back->prev = current;
+	current->next = back;
+}
+
+
+/**
  * insertion_sort_list - Entry point
  * @list: head
- * Return: Always
+ * Return: Always 0
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *loop, *back, *tmp, *current;
+	listint_t *loop, *current;
 
 
-	if (!*list || !(*list)->next)
+	if (!*list || !list)
 		return;
 	loop = (*list)->next;
 
@@ -18,25 +37,18 @@ void insertion_sort_list(listint_t **list)
 	{
 		current = loop;
 		loop = loop->next;
-		back = current->prev;
-		while (back)
+		while (current && current->prev)
 		{
-			tmp = back->prev;
-			if (back->n > current->n)
+
+			if (current->prev->n > current->n)
 			{
-				if (back->prev)
-					back->prev->next = current;
-				if (current->next)
-					current->next->prev = back;
-				back->next = current->next;
-				current->prev = back->prev;
-				back->prev = current;
-				current->next = back;
+				swap(current->prev, current);
 				if (!current->prev)
 					*list = current;
 				print_list(*list);
 			}
-			back = tmp;
+			else
+				current = current->prev;
 		}
 	}
 }
