@@ -50,7 +50,7 @@ int partition(int *a, int left, int right, int size)
 	{
 		swap(a, i, pivot);
 		if (i != pivot)
-		print_array(a, size);
+			print_array(a, size);
 	}
 	return (i);
 }
@@ -67,12 +67,12 @@ void qs(int *a, int left, int right, int size)
 {
 	int index;
 
-	if (left > right)
-		return;
-
+	if (right > left)
+	{
 	index = partition(a, left, right, size);
 	qs(a, left, index - 1, size);
 	qs(a, index + 1, right, size);
+	}
 }
 
 
