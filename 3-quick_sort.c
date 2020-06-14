@@ -69,9 +69,9 @@ void qs(int *a, int left, int right, int size)
 
 	if (right > left)
 	{
-	index = partition(a, left, right, size);
-	qs(a, left, index - 1, size);
-	qs(a, index + 1, right, size);
+		index = partition(a, left, right, size);
+		qs(a, left, index - 1, size);
+		qs(a, index + 1, right, size);
 	}
 }
 
