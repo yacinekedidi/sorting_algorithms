@@ -38,16 +38,16 @@ void shell_sort(int *a, size_t size)
 	{
 		for (i = gap ; i < size ; i++)
 		{
-			j = i;
-			for (; j >= gap ; j -= gap)
+			for (j = i ; j >= gap ;)
 			{
 				if (a[j - gap] > a[j])
 				{
 					swap(&a[j - gap], &a[j]);
+					j -= gap;
 				}
 			}
 		}
-		gap = (gap - 1) / 3;
+		gap /= 3;
 		print_array(a, size);
 	}
 
