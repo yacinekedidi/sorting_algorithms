@@ -1,5 +1,21 @@
 #include "sort.h"
 
+/**
+ * swap - Entry point
+ * @x: ele
+ * @y: ele
+ * Return: Always
+ */
+
+void swap(int *x, int *y)
+{
+	int tmp;
+
+	tmp = *x;
+	*x = *y;
+	*y = tmp;
+}
+
 
 /**
  * shell_sort - Entry point
@@ -11,7 +27,6 @@
 void shell_sort(int *a, size_t size)
 {
 	size_t gap = 1, i, j;
-	int tmp;
 
 	if (!a || !size)
 		return;
@@ -24,11 +39,12 @@ void shell_sort(int *a, size_t size)
 		for (i = gap ; i < size ; i++)
 		{
 			j = i;
-			for (; j >= gap && a[j - gap] > a[j] ; j -= gap)
+			for (; j >= gap ; j -= gap)
 			{
-				tmp = a[j];
-				a[j] = a[j - gap];
-				a[j - gap] = tmp;
+				if (a[j - gap] > a[j])
+				{
+					swap(&a[j - gap], &a[j]);
+				}
 			}
 		}
 		gap /= 3;
