@@ -10,7 +10,8 @@
 
 void shell_sort(int *a, size_t size)
 {
-	size_t gap = 1, i, j, tmp;
+	size_t gap = 1, i, j;
+	int tmp;
 
 	if (!a || !size)
 		return;
