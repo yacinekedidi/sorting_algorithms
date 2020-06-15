@@ -19,16 +19,16 @@ void swap(int *x, int *y)
 
 /**
  * shell_sort - Entry point
- * @a: arr
+ * @array: arr
  * @size: size
  * Return: Always 0
  */
 
-void shell_sort(int *a, size_t size)
+void shell_sort(int *array, size_t size)
 {
 	size_t gap = 1, i, j;
 
-	if (!a || !size)
+	if (!array || !size)
 		return;
 
 	while (gap < (size / 3))
@@ -38,13 +38,13 @@ void shell_sort(int *a, size_t size)
 	{
 		for (i = gap ; i < size ; i++)
 		{
-			for (j = i ; j >= gap && a[j - gap] > a[j] ;)
+			for (j = i ; j >= gap && array[j - gap] > array[j] ;)
 			{
-				swap(&a[j - gap], &a[j]);
+				swap(&array[j - gap], &array[j]);
 				j -= gap;
 			}
 		}
-		print_array(a, size);
+		print_array(array, size);
 	}
 
 }
