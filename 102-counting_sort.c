@@ -28,8 +28,8 @@ void counting_sort(int *array, size_t size)
 	for (i = 0 ; i < size ; i++)
 		a[array[i]] += 1;
 
-	for (j = 1 ; j < max + 1 ; j++)
-		a[j + 1] = a[j + 1] + a[j];
+	for (j = 0 ; j < (max + 1) ; j++)
+		a[j] += a[j - 1];
 	print_array(a, max + 1);
 	b = malloc(sizeof(int) * size);
 	if (!b)
@@ -39,12 +39,11 @@ void counting_sort(int *array, size_t size)
 	}
 	for (i = 0 ; i < size ; i++)
 	{
-		b[a[array[i]]-- - 1] = array[i];
+		b[a[array[i]] - 1] = array[i];
+		a[array[i]] -= 1;
 	}
 	for (i = 0 ; i < size ; i++)
-	{
 		array[i] = b[i];
-	}
 	free(a);
 	free(b);
 }
